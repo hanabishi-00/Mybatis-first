@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import pojo.User;
+import pojo.UserCustom;
+import pojo.UserQueryVo;
 
 import java.util.List;
 
@@ -21,4 +23,24 @@ public class UserService {
         List<User> list = userMapper.findUserByName(name);
         return list;
     }
+    public Integer insertUser(User user){
+        return userMapper.insertUser(user);
+    }
+    public void deleteUserById(int id){
+         userMapper.deleteUserById(id);
+    }
+    public void updateUser(User user){
+        userMapper.updateUserById(user);
+    }
+    public List<UserCustom> findUserList(UserQueryVo userQueryVo){
+        return userMapper.findUserList(userQueryVo);
+    }
+    public User findUserIdByResultMap(int id){
+        User user=userMapper.findUserIdByResultMap(id);
+        return user;
+    }
+    public List<UserCustom> findUserList1(UserQueryVo userQueryVo){
+        return this.userMapper.findUserList1(userQueryVo);
+    }
+
 }

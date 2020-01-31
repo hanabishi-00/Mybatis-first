@@ -9,4 +9,49 @@
     <select id="findUserByName" parameterType="java.lang.String" resultType="pojo.User">
     SELECT * FROM `user` WHERE username LIKE "%${value}%"
     </select>
+    <insert id="insertUser" parameterType="pojo.User">
+    <selectKey keyProperty="id" order="AFTER" resultType="int">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
+        INSERT INTO `USER`(username,birthday,sex,address) VALUES (#{username},#{birthday},#{sex},#{address})
+    </insert>
+    <delete id="deleteUserById" parameterType="int">
+        delete from user where id = #{id}
+    </delete>
+    <update id="updateUserById" parameterType="pojo.User" >
+        update user set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address}
+        where id=#{id}
+    </update>
+    <select id="findUserList" parameterType="userQueryVo" resultType="userCustom">
+        SELECT * FROM user
+        <include refid="query_user_where"></include>
+
+    </select>
+    <resultMap id="findUserIdByResultMap" type="User">
+    <id column="id_" property="id"/>
+    <result column="username_" property="username"/>
+    </resultMap>
+    <select id="findUserIdByResultMap" resultMap="findUserIdByResultMap" parameterType="int">
+        SELECT id id_,username username_ FROM `user` where id=#{id}
+    </select>
+    <select id="findUserList1" parameterType="pojo.UserQueryVo" resultType="pojo.UserCustom">
+        select * from user where id in
+        <if test="ids!=null">
+        <foreach collection="ids" item="user_id" open="(" close=")" separator=",">
+            #{user_id}
+        </foreach>
+        </if>
+    </select>
+    <sql id="query_user_where">
+<where>
+        <if test="userCustom!=null">
+            <if test="userCustom.sex!=null and userCustom.sex!=''">
+                AND user.sex=#{userCustom.sex}
+            </if>
+            <if test="userCustom.username!=null and userCustom.username!=''">
+                AND user.username LIKE '%${userCustom.username}'
+            </if>
+        </if>
+</where>
+    </sql>
 </mapper>

@@ -2,12 +2,13 @@ package pojo;
 
 import javax.xml.crypto.Data;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class User implements Serializable {
     private Integer id;
     private String username;
-    private Data birthday;
+    private Date birthday;
     private String address;
     private Integer sex;
     private List<User> list;
@@ -35,11 +36,11 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public Data getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Data birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
@@ -61,6 +62,6 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-    return  username;
+    return  username + sex;
     }
 }
