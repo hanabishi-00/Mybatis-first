@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import pojo.User;
 import pojo.UserCustom;
 import pojo.UserQueryVo;
-
 import java.util.List;
 
 @Mapper

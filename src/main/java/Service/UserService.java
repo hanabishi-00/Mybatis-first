@@ -1,5 +1,6 @@
 package Service;
 
+
 import Mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -42,5 +43,6 @@ public class UserService {
     public List<UserCustom> findUserList1(UserQueryVo userQueryVo){
         return this.userMapper.findUserList1(userQueryVo);
     }
+
 
 }
