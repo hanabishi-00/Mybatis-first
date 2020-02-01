@@ -18,4 +18,5 @@ public interface UserMapper {
     List<UserCustom> findUserList(UserQueryVo userQueryVo);
     User findUserIdByResultMap(int id);
     List<UserCustom> findUserList1(UserQueryVo userQueryVo);
+    List<User> findUserAndItemsResultMap();
 }

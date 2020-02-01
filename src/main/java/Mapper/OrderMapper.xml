@@ -7,4 +7,34 @@
     select orders.*,user.username,user.sex,user.address from orders,user where
     orders.user_id=user.id
 </select>
+    <resultMap id="findOrdersUserResultMap" type="Orders">
+        <id column="id" property="id"/>
+        <result column="user_id" property="user_id"/>
+        <result column="number" property="number"/>
+        <result column="createtime" property="createtime"/>
+        <result column="note" property="note"/>
+        <association property="user" javaType="pojo.User">
+            <id column="user_id" property="id"/>
+            <result column="username" property="username"/>
+            <result column="sex" property="sex"/>
+            <result column="address" property="address"/>
+        </association>
+    </resultMap>
+    <select id="findOrdersUserResultMap" resultMap="findOrdersUserResultMap">
+        select orders.*,user.username,user.sex,user.address from orders,user where
+    orders.user_id=user.id
+    </select>
+    <resultMap id="findOrderDetails" type="Orders" extends="findOrdersUserResultMap">
+    <collection property="orderDetails" ofType="Orderdetails">
+        <id column="Orderdetails_id" property="id"/>
+        <result column="items_id" property="items_id"/>
+        <result column="items_num" property="items_num"/>
+        <result column="order_id" property="order_id"/>
+    </collection>
+    </resultMap>
+    <select id="findOrderDetails" resultMap="findOrderDetails" >
+        SELECT orders.*,orderdetail.items_id,orderdetail.items_num,`user`.address,`user`.sex,`user`.username from `user`,
+ orders,orderdetail WHERE orders.user_id=`user`.id AND orderdetail.orders_id=orders.id
+    </select>
+
 </mapper>

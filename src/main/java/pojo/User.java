@@ -15,6 +15,7 @@ public class User implements Serializable {
     public List<User> getList() {
         return list;
     }
+    private List<Orders> ordersList;
 
     public void setList(List<User> list) {
         this.list = list;

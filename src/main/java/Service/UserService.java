@@ -43,6 +43,8 @@ public class UserService {
     public List<UserCustom> findUserList1(UserQueryVo userQueryVo){
         return this.userMapper.findUserList1(userQueryVo);
     }
-
+    public List<User> findUserAndItemsResultMap(){
+        return userMapper.findUserAndItemsResultMap();
+    }
 
 }

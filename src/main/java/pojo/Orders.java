@@ -2,6 +2,7 @@ package pojo;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class Orders {
     private Integer id;
@@ -9,6 +10,16 @@ public class Orders {
     private String number;
     private Date createtime;
     private String note;
+    private User user;
+    public List<OrderDetails> orderDetails;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Integer getId() {
         return id;
     }

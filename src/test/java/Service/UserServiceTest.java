@@ -5,9 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import pojo.OrdersCustom;
-import pojo.UserCustom;
-import pojo.UserQueryVo;
+import pojo.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +19,7 @@ public class UserServiceTest {
     OrderService orderService;
 @Test
 public void findUser() {
-      UserQueryVo userQueryVo=new UserQueryVo();
+//      UserQueryVo userQueryVo=new UserQueryVo();
 //    UserCustom userCustom=new UserCustom();
 //    userCustom.setId(36);
 //    userCustom.setUsername("小明");
@@ -38,9 +36,11 @@ public void findUser() {
 //    userQueryVo.setUserCustom(userCustom);
 //    List<UserCustom> list = userService.findUserList(userQueryVo);
 //    System.out.println(list);
-    List<OrdersCustom> list1;
-    list1= orderService.findOrdersUser();
-    System.out.println(list1);
+//    List<Orders> list1;
+//    list1= orderService.findOrderDetails();
+//    System.out.println(list1);
+    List<User> list=userService.findUserAndItemsResultMap();
+    System.out.println(list);
 
 
 }}
